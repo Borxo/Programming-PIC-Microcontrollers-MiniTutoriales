@@ -1,10 +1,10 @@
 /*
  * Programa: Timer0_Contador. 
  * Microcontrolador: PIC16F1936.
- * Autor: Borxo Garc韆.
+ * Autor: Borxo Garc铆a.
  */
 
-//Palabras de configuraci髇
+//Palabras de configuraci贸n
 // CONFIG1
 #pragma config FOSC = INTOSC    
 #pragma config WDTE = OFF       
@@ -32,14 +32,14 @@
 
 void main (void)
 {
-    //Configuraci髇 de los Puertos//
+    //Configuraci贸n de los Puertos//
     TRISA=0xFF;                 //Puerto A como Entradas.
     TRISC=0x00;                 //Puerto C como Salidas.
     
-    //Configuraci髇 Timer0//
+    //Configuraci贸n Timer0//
     OPTION_REG=0b10111000;      // Reloj Externo,Flanco de Subida y
                                 // 2X prescaler. 
-    T0XCS=0;                    // Desactivado en el Modo contador.
+    T0XCS=0;                    // Seleccionado el T0CKl.
     
     //Oscilador//
     OSCCON=0b01011000;          //1Mhz.
@@ -49,6 +49,6 @@ void main (void)
             TMR0=250;           //Valor de inicio del Timer0.    
             TMR0IF=0;           //Se borra el flag desbordamiento del Timer0.
             while(TMR0IF==0);   //Se espera desbordamiento del Timer0.
-            RC2^=1;             //Conmutaci髇 del Pin RC2. 
+            RC2^=1;             //Conmutaci贸n del Pin RC2. 
         }    
 }
